@@ -1,0 +1,15 @@
+name: Purge jsDelivr Cache
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'safety-script.js'  # Only trigger if this file is changed
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge jsDelivr Cache
+        run: |
+          curl -X GET "https://purge.jsdelivr.net/gh/KaramatUrhem/test-store/safety-script.js"
